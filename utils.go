@@ -1,6 +1,10 @@
 package main
 
-import "math/rand"
+import (
+	"fmt"
+	"math/rand"
+	sort "sort"
+)
 
 // generateRandomString is utility function to fill AVL and BST with random string values
 func generateRandomString(length int) string {
@@ -12,17 +16,10 @@ func generateRandomString(length int) string {
 	return string(b)
 }
 
-// sortStrArray basically returns sorted array of strings
-func sortStrArray(arr []string) []string {
-	for _, v := range arr {
-		for i := 0; i <= len(arr)-1; i++ {
-			if v < arr[i] {
-				v, arr[i] = arr[i], v
-			}
-		}
-	}
+// sortStrArray basically returns sorted array of strings (bubble sort)
 
-	return arr
+func sortStrArray(arr []string) {
+	sort.Strings(arr)
 }
 
 // min utils function returns minimal value from array of string
@@ -44,4 +41,29 @@ func max(a, b int) int {
 	}
 
 	return b
+}
+
+func printAVLTree(node *AVL, indent int) {
+	if node == nil {
+		return
+	}
+
+	// print the current node
+	fmt.Printf("%s%s\n", getIndentString(indent), node.Value)
+
+	// print left subtree
+	fmt.Printf("%sLeft:\n", getIndentString(indent+1))
+	printAVLTree(node.LeftNode, indent+2)
+
+	// print right subtree
+	fmt.Printf("%sRight:\n", getIndentString(indent+1))
+	printAVLTree(node.RightNode, indent+2)
+}
+
+func getIndentString(indent int) string {
+	result := ""
+	for i := 0; i < indent; i++ {
+		result += "  " // Use 2 spaces for each level of indentation
+	}
+	return result
 }

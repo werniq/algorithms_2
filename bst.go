@@ -6,38 +6,49 @@ type BST struct {
 	RightNode *BST
 }
 
-// Insert - insertion operation of BST using recursion
-func (b *BST) Insert(value string) *BST {
-	// since we can assign b := &BST{} which is basically nil
-	// I've introduced nil check, in order to prevent panic()
-	if b == nil {
-		return &BST{Value: value}
+func InitializeBST(arr []string) *BST {
+	if len(arr) == 0 {
+		return nil
 	}
 
-	// if current BST value is less then potentially inserted
-	// then, we need to go right
-	if b.Value < value {
-		b.RightNode = b.RightNode.Insert(value)
-	} else if b.Value > value {
-		b.LeftNode = b.LeftNode.Insert(value)
-	} else {
-		return b
+	bst := &BST{
+		Value: arr[0],
 	}
 
-	return nil
+	for i := 1; i < len(arr); i++ {
+		bst.Insert(arr[i])
+	}
+
+	return bst
 }
 
-// Search - search operation of BST using recursion as well
-func (b *BST) Search(value string) *BST {
-	for {
-		if b.Value == value {
-			return b
-		} else if b.Value < value {
-			b.LeftNode.Search(value)
+func (b *BST) Insert(value string) *BST {
+	if value < b.Value {
+		if b.LeftNode == nil {
+			b.LeftNode = &BST{Value: value}
 		} else {
-			// b.Value > value
-			b.RightNode.Search(value)
+			b.LeftNode.Insert(value)
+		}
+	} else {
+		if b.RightNode == nil {
+			b.RightNode = &BST{Value: value}
+		} else {
+			b.RightNode.Insert(value)
 		}
 	}
-	return nil
+	return b
+}
+
+func (b *BST) Search(value string) bool {
+	if b == nil {
+		return false
+	}
+
+	if value == b.Value {
+		return true
+	} else if value < b.Value {
+		return b.LeftNode.Search(value)
+	} else {
+		return b.RightNode.Search(value)
+	}
 }
