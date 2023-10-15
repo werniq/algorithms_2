@@ -59,13 +59,13 @@ As I said before, the difference between heights of two child nodes of one
 parent node should at most 1. For being a proper AVL tree, it needs to perform
 rotation of nodes. <br> <br>
 1. Left-left: <br>
-<img height="200" width="200" src="https://www.gatevidyalay.com/wp-content/uploads/2018/08/AVL-Tree-Rotations-Case-1.png"> <br>
+<img height="200" width="400" src="llRotation.png"> <br>
 2. Right-right: <br>
-<img height="200" width="200" src="https://www.gatevidyalay.com/wp-content/uploads/2018/08/AVL-Tree-Rotations-Case-2.png"> <br>
-3. Left-left: <br>
-<img height="200" width="200" src="https://www.gatevidyalay.com/wp-content/uploads/2018/08/AVL-Tree-Rotations-Case-3.png"> <br>
-4. Left-left: <br>
-   <img height="200" width="200" src="https://www.gatevidyalay.com/wp-content/uploads/2018/08/AVL-Tree-Rotations-Case-4.png"> <br>
+<img height="200" width="400" src="rrRotation.png"> <br>
+3. Rightt-left: <br>
+<img height="200" width="400" src="rlRotation.png"> <br>
+4. Left-right: <br>
+   <img height="200" width="400" src="lrRotation.png"> <br>
 This rotations keep AVL tree an AVL tree.
 
 ## 2.1 Insertion into AVL tree
@@ -105,7 +105,7 @@ Afterward, we will search for 100 values, and compare results.
 
 
 # 4. Results
-<p style="font-size: 36px">
+<p style="font-size: 18px">
     Inserting into AVL and BST
 </p>
 
